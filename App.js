@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import configureStore from './src/store/configureStore'
 import firebase from 'firebase'
 import firebaseConfig from './firebaseConfig'
-import rootReducer from './src/reducers'
 
 import Header from './src/components/Header'
 import LoginForm from './src/containers/LoginForm'
+
+const store = configureStore()
 
 export default class App extends Component {
 
@@ -17,7 +18,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <Provider store={createStore(rootReducer)}>
+      <Provider store={store}>
         <View style={{ flex: 1 }}>
           <Header text="Boss Simulator 2017" />
           <LoginForm />
