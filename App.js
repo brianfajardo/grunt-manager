@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import firebase from 'firebase'
 import firebaseConfig from './firebaseConfig'
 import rootReducer from './src/reducers'
+
+import Header from './src/components/Header'
+import LoginForm from './src/containers/LoginForm'
 
 export default class App extends Component {
 
@@ -15,20 +18,11 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={createStore(rootReducer)}>
-        <View style={styles.container}>
-          <Text>Employer Simulator 2017</Text>
+        <View style={{ flex: 1 }}>
+          <Header text="Boss Simulator 2017" />
+          <LoginForm />
         </View>
       </Provider>
     )
   }
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -3,3 +3,4 @@ node_modules/
 npm-debug.*
 .flowconfig
 .watchmanconfig
+.DS_STORE
