@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { FormLabel, FormInput, Button } from 'react-native-elements'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
