@@ -1,13 +1,6 @@
 import firebase from 'firebase'
-import {
-  EMAIL_CHANGE,
-  PASSWORD_CHANGE,
-  USER_LOGIN
-} from '../constants/actionTypes'
-import {
-  userLoginSuccess,
-  userLoginFail
-} from '../utils/userLogin'
+import { EMAIL_CHANGE, PASSWORD_CHANGE, USER_LOGIN } from '../constants/actionTypes'
+import { userLoginSuccess, userLoginFail } from '../utils/userLogin'
 
 export const emailChange = input => ({
   type: EMAIL_CHANGE,
