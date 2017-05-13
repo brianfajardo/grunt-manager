@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
-import { connect } from 'react-redux'
 import {
   FormLabel,
   FormInput,
@@ -8,11 +7,10 @@ import {
   FormValidationMessage
 } from 'react-native-elements'
 import PropTypes from 'prop-types'
-import * as actions from '../actions'
 
-import Spinner from '../components/Spinner'
+import Spinner from './Spinner'
 
-class LoginForm extends Component {
+export default class LoginForm extends Component {
 
   constructor() {
     super()
@@ -86,11 +84,6 @@ class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
-  const { email, password, isLoading, error } = auth
-  return { email, password, isLoading, error }
-}
-
 LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
@@ -117,5 +110,3 @@ const style = StyleSheet.create({
     fontSize: 16
   }
 })
-
-export default connect(mapStateToProps, actions)(LoginForm)

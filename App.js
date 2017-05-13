@@ -6,7 +6,7 @@ import firebase from 'firebase'
 import firebaseConfig from './firebaseConfig'
 
 import Header from './src/components/Header'
-import LoginForm from './src/containers/LoginForm'
+import UserLogin from './src/containers/UserLogin'
 
 const store = configureStore()
 
@@ -21,7 +21,7 @@ export default class App extends Component {
       <Provider store={store}>
         <View style={{ flex: 1 }}>
           <Header text="Boss Simulator 2017" />
-          <LoginForm />
+          <UserLogin />
         </View>
       </Provider>
     )
