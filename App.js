@@ -1,23 +1,26 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react'
+import { View } from 'react-native'
+import { Provider } from 'react-redux'
+import configureStore from './src/store/configureStore'
+import firebase from 'firebase'
+import firebaseConfig from './firebaseConfig'
 
-export default class App extends React.Component {
+import Router from './src/Router'
+import Header from './src/components/Header'
+
+const store = configureStore()
+
+export default class App extends Component {
+
+  componentWillMount() {
+    firebase.initializeApp(firebaseConfig)
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
+      <Provider store={store}>
+        <Router />
+      </Provider>
+    )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
