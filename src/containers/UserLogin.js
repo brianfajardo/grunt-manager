@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import firebase from 'firebase'
+import firebaseConfig from '../firebaseConfig'
 import PropTypes from 'prop-types'
 import * as actions from '../actions'
 
 import LoginForm from '../components/LoginForm'
 
 class UserLogin extends Component {
+
+  componentWillMount() {
+    firebase.initializeApp(firebaseConfig)
+  }
+
   render() {
     return <LoginForm {...this.props} />
   }

@@ -2,10 +2,10 @@ import React from 'react'
 import { Scene, Router } from 'react-native-router-flux'
 
 import UserLogin from './containers/UserLogin'
-
-// sceneStyle kinda like a global style
+import Employees from './containers/Employees'
 
 export default () =>
   <Router sceneStyle={{ paddingTop: 65 }}>
-    <Scene key="login" component={UserLogin} title="Please Login" />
+    <Scene key="loginPage" component={UserLogin} title="Login" />
+    <Scene key="employeesPage" component={Employees} title="Employees" initial />
   </Router>
