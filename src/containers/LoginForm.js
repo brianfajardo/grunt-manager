@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
-import { FormLabel, FormInput, Button } from 'react-native-elements'
 import { connect } from 'react-redux'
+import {
+  FormLabel,
+  FormInput,
+  Button,
+  FormValidationMessage
+} from 'react-native-elements'
 import PropTypes from 'prop-types'
 import * as actions from '../actions'
+
+import Spinner from '../components/Spinner'
 
 class LoginForm extends Component {
 
@@ -27,12 +34,28 @@ class LoginForm extends Component {
     loginUser(email, password)
   }
 
+  renderButton() {
+    return (
+      this.props.isLoading
+        ? <Spinner size={'large'} color={'#51DD8D'} />
+        : <Button
+          title="Login"
+          onPress={this.onButtonPress}
+          buttonStyle={style.buttonStyle}
+        />
+    )
+  }
+
   render() {
-    const { email, password } = this.props
-    const { componentContainer, buttonContainer, buttonStyle } = style
+    const { email, password, error } = this.props
+    const {
+      buttonContainer,
+      errorContainerStyle,
+      errorTextStyle
+     } = style
 
     return (
-      <View style={componentContainer}>
+      <View>
         <View>
           <FormLabel>Email</FormLabel>
           <FormInput
@@ -48,42 +71,50 @@ class LoginForm extends Component {
             secureTextEntry={true}
           />
         </View>
+        <View style={errorContainerStyle}>
+          <FormValidationMessage
+            labelStyle={errorTextStyle}
+          >
+            {error}
+          </FormValidationMessage>
+        </View>
         <View style={buttonContainer}>
-          <Button
-            title="Login"
-            onPress={this.onButtonPress}
-            buttonStyle={buttonStyle}
-          />
+          {this.renderButton()}
         </View>
       </View>
     )
   }
 }
 
-const mapStateToProps = ({ auth: { email, password } }) => ({
-  email,
-  password
-})
+const mapStateToProps = ({ auth }) => {
+  const { email, password, isLoading, error } = auth
+  return { email, password, isLoading, error }
+}
 
 LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   emailChange: PropTypes.func.isRequired,
-  passwordChange: PropTypes.func.isRequired
+  passwordChange: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  loginUser: PropTypes.func.isRequired,
+  error: PropTypes.string
 }
 
 const style = StyleSheet.create({
-  componentContainer: {
-    flex: 1
-  },
   buttonContainer: {
-    flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 50
   },
   buttonStyle: {
     borderRadius: 20,
-    marginTop: 50,
     width: 150
+  },
+  errorContainerStyle: {
+    alignItems: 'center'
+  },
+  errorTextStyle: {
+    fontSize: 16
   }
 })
 

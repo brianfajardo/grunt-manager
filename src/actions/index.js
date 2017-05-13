@@ -1,7 +1,8 @@
 import firebase from 'firebase'
 import {
   EMAIL_CHANGE,
-  PASSWORD_CHANGE
+  PASSWORD_CHANGE,
+  USER_LOGIN
 } from '../constants/actionTypes'
 import {
   userLoginSuccess,
@@ -20,6 +21,7 @@ export const passwordChange = input => ({
 
 export const loginUser = (email, password) => {
   return (dispatch) => {
+    dispatch({ type: USER_LOGIN })
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => userLoginSuccess(dispatch, user))
       .catch(() => {
