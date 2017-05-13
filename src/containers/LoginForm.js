@@ -11,6 +11,7 @@ class LoginForm extends Component {
     super()
     this.onEmailChange = this.onEmailChange.bind(this)
     this.onPasswordChange = this.onPasswordChange.bind(this)
+    this.onButtonPress = this.onButtonPress.bind(this)
   }
 
   onEmailChange(input) {
@@ -19,6 +20,11 @@ class LoginForm extends Component {
 
   onPasswordChange(input) {
     this.props.passwordChange(input)
+  }
+
+  onButtonPress() {
+    const { email, password, loginUser } = this.props
+    loginUser(email, password)
   }
 
   render() {
@@ -45,6 +51,7 @@ class LoginForm extends Component {
         <View style={buttonContainer}>
           <Button
             title="Login"
+            onPress={this.onButtonPress}
             buttonStyle={buttonStyle}
           />
         </View>
