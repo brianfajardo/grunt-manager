@@ -6,7 +6,6 @@ import * as actions from '../actions'
 import LoginForm from '../components/LoginForm'
 
 class UserLogin extends Component {
-
   render() {
     return <LoginForm {...this.props} />
   }
