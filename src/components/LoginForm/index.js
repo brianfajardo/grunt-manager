@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import {
-  FormLabel,
-  FormInput,
-  Button,
-  FormValidationMessage
-} from 'react-native-elements'
+import { FormLabel, FormInput, Button, FormValidationMessage } from 'react-native-elements'
 import styles from './styles'
 import PropTypes from 'prop-types'
 import Spinner from '../Spinner'
@@ -46,11 +41,7 @@ export default class LoginForm extends Component {
 
   render() {
     const { email, password, error } = this.props
-    const {
-      buttonContainer,
-      errorContainerStyle,
-      errorTextStyle
-     } = styles
+    const { buttonContainer, errorContainerStyle, errorTextStyle } = styles
 
     return (
       <View>
