@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 import {
   FormLabel,
   FormInput,
   Button,
   FormValidationMessage
 } from 'react-native-elements'
+import styles from './styles'
 import PropTypes from 'prop-types'
-
-import Spinner from './Spinner'
+import Spinner from '../Spinner'
 
 export default class LoginForm extends Component {
 
@@ -39,7 +39,7 @@ export default class LoginForm extends Component {
         : <Button
           title="Login"
           onPress={this.onButtonPress}
-          buttonStyle={style.buttonStyle}
+          buttonStyle={styles.buttonStyle}
         />
     )
   }
@@ -50,7 +50,7 @@ export default class LoginForm extends Component {
       buttonContainer,
       errorContainerStyle,
       errorTextStyle
-     } = style
+     } = styles
 
     return (
       <View>
@@ -93,20 +93,3 @@ LoginForm.propTypes = {
   loginUser: PropTypes.func.isRequired,
   error: PropTypes.string
 }
-
-const style = StyleSheet.create({
-  buttonContainer: {
-    alignItems: 'center',
-    marginTop: 50
-  },
-  buttonStyle: {
-    borderRadius: 20,
-    width: 150
-  },
-  errorContainerStyle: {
-    alignItems: 'center'
-  },
-  errorTextStyle: {
-    fontSize: 16
-  }
-})

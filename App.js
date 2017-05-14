@@ -1,15 +1,11 @@
 import React from 'react'
-import { View } from 'react-native'
 import { Provider } from 'react-redux'
 import configureStore from './src/store/configureStore'
 import firebase from 'firebase'
-import firebaseConfig from './src/firebaseConfig'
-
-import Router from './src/Router'
-
-const store = configureStore()
+import firebaseConfig from './src/configs/firebaseConfig'
+import Router from './src/configs/router'
 
 export default () =>
-  <Provider store={store}>
+  <Provider store={configureStore()}>
     <Router />
   </Provider>

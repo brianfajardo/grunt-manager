@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import EmployeesList from '../components/EmployeesList'
 
-import EmployeeList from '../components/EmployeeList'
-
-export default class Employees extends Component {
+export default class EmployeesContainer extends Component {
   render() {
     return <EmployeeList />
   }

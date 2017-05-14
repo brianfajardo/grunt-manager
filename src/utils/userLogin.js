@@ -9,7 +9,7 @@ export const userLoginSuccess = (dispatch, user) => {
 
   // on successful login, navigate to employeesPage
   // based on router scene & key
-  Actions.employeesPage()
+  Actions.employees()
 }
 
 export const userLoginFail = dispatch => {

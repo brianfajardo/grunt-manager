@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import firebase from 'firebase'
-import firebaseConfig from '../firebaseConfig'
+import firebaseConfig from '../configs/firebaseConfig'
 import PropTypes from 'prop-types'
 import * as actions from '../actions'
-
 import LoginForm from '../components/LoginForm'
 
-class UserLogin extends Component {
+class LoginContainer extends Component {
 
   componentWillMount() {
     firebase.initializeApp(firebaseConfig)
@@ -23,7 +22,7 @@ const mapStateToProps = ({ auth }) => {
   return { email, password, isLoading, error }
 }
 
-LoginForm.propTypes = {
+LoginContainer.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   emailChange: PropTypes.func.isRequired,
@@ -33,4 +32,4 @@ LoginForm.propTypes = {
   error: PropTypes.string
 }
 
-export default connect(mapStateToProps, actions)(UserLogin)
+export default connect(mapStateToProps, actions)(LoginContainer)
