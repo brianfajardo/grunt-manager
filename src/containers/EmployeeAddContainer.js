@@ -18,7 +18,7 @@ const mapStateToProps = ({ employeeForm: { name, phone, shift } }) => ({
 EmployeeAddContainer.propTypes = {
   name: PropTypes.string,
   phone: PropTypes.string,
-  // shift: PropTypes.
+  shift: PropTypes.string,
   employeeUpdate: PropTypes.func.isRequired
 }
 

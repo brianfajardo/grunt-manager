@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { Picker } from 'react-native'
 import { Card, FormInput, FormLabel, Button } from 'react-native-elements'
 import PropTypes from 'prop-types'
 
@@ -7,29 +7,40 @@ export default EmployeeAddForm = (props) => {
   const { name, phone, shift, employeeUpdate } = props
 
   return (
-    <View>
-      <Card>
-        <FormLabel>Name</FormLabel>
-        <FormInput
-          value={name}
-          placeholder="Jane Doe"
-          onChangeText={value => employeeUpdate({ prop: 'name', value })}
-        />
-        <FormLabel>Phone</FormLabel>
-        <FormInput
-          value={phone}
-          placeholder="000-000-0000"
-          onChangeText={value => employeeUpdate({ prop: 'phone', value })}
-        />
-        <Button title="Add" />
-      </Card>
-    </View>
+    <Card>
+      <FormLabel>Name</FormLabel>
+      <FormInput
+        value={name}
+        placeholder="Jane Doe"
+        onChangeText={value => employeeUpdate({ prop: 'name', value })}
+      />
+      <FormLabel>Phone</FormLabel>
+      <FormInput
+        value={phone}
+        placeholder="000-000-0000"
+        onChangeText={value => employeeUpdate({ prop: 'phone', value })}
+      />
+      <FormLabel>Shift</FormLabel>
+      <Picker
+        selectedValue={shift}
+        onValueChange={value => employeeUpdate({ prop: 'shift', value })}
+      >
+        <Picker.Item label="Monday" value="Monday" />
+        <Picker.Item label="Tuesday" value="Tuesday" />
+        <Picker.Item label="Wednesday" value="Wednesday" />
+        <Picker.Item label="Thursday" value="Thursday" />
+        <Picker.Item label="Friday" value="Friday" />
+        <Picker.Item label="Saturday" value="Saturday" />
+        <Picker.Item label="Sunday" value="Sunday" />
+      </Picker>
+      <Button title="Add" />
+    </Card>
   )
 }
 
 EmployeeAddForm.propTypes = {
   name: PropTypes.string,
   phone: PropTypes.string,
-  // shift: PropTypes.
+  shift: PropTypes.string,
   employeeUpdate: PropTypes.func.isRequired
 }
