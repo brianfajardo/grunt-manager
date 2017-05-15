@@ -1,22 +1,35 @@
 import React from 'react'
-import { Router, Scene } from 'react-native-router-flux'
+import { Router, Scene, Actions } from 'react-native-router-flux'
 import LoginContainer from '../containers/LoginContainer'
 import EmployeesContainer from '../containers/EmployeesContainer'
+import EmployeeAdd from '../components/EmployeeAdd'
 
 export default () =>
   <Router sceneStyle={{ paddingTop: 65 }}>
+
     <Scene key="auth">
       <Scene
         key="login"
         title="Login"
         component={LoginContainer}
+        initial
       />
     </Scene>
+
     <Scene key="main">
       <Scene
         key="employees"
         title="Employees"
         component={EmployeesContainer}
-        initial />
+        initial
+        rightTitle="Add"
+        onRight={() => Actions.employeeAdd()}
+      />
+      <Scene
+        key="employeeAdd"
+        title="Add Employee"
+        component={EmployeeAdd}
+      />
     </Scene>
+
   </Router>

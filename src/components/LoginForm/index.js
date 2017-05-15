@@ -35,7 +35,7 @@ export default class LoginForm extends Component {
   renderButton() {
     return (
       this.props.isLoading
-        ? <Spinner size={'large'} color={'#51DD8D'} />
+        ? <Spinner size={'large'} />
         : <Button
           title="Login"
           onPress={this.onButtonPress}
