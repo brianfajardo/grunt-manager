@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import firebase from 'firebase'
 import firebaseConfig from '../configs/firebaseConfig'
 import PropTypes from 'prop-types'
-import * as actions from '../actions'
+import * as actions from '../actions/authActions'
 import LoginForm from '../components/LoginForm'
 
 class LoginContainer extends Component {

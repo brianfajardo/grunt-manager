@@ -2,7 +2,7 @@ import React from 'react'
 import { Router, Scene, Actions } from 'react-native-router-flux'
 import LoginContainer from '../containers/LoginContainer'
 import EmployeesContainer from '../containers/EmployeesContainer'
-import EmployeeAdd from '../components/EmployeeAdd'
+import EmployeeAddContainer from '../containers/EmployeeAddContainer'
 
 export default () =>
   <Router sceneStyle={{ paddingTop: 65 }}>
@@ -28,7 +28,7 @@ export default () =>
       <Scene
         key="employeeAdd"
         title="Add Employee"
-        component={EmployeeAdd}
+        component={EmployeeAddContainer}
       />
     </Scene>
 
