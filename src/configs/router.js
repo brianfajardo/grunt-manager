@@ -5,6 +5,18 @@ import EmployeesContainer from '../containers/EmployeesContainer'
 
 export default () =>
   <Router sceneStyle={{ paddingTop: 65 }}>
-    <Scene key="login" component={LoginContainer} title="Login" initial />
-    <Scene key="employees" component={EmployeesContainer} title="Employees" />
+    <Scene key="auth">
+      <Scene
+        key="login"
+        title="Login"
+        component={LoginContainer}
+      />
+    </Scene>
+    <Scene key="main">
+      <Scene
+        key="employees"
+        title="Employees"
+        component={EmployeesContainer}
+        initial />
+    </Scene>
   </Router>

@@ -20,7 +20,9 @@ export const loginUser = (email, password) => {
       .catch(() => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then(user => userLoginSuccess(dispatch, user))
-          .catch(() => userLoginFail(dispatch))
+          .catch(error => {
+            userLoginFail(dispatch, error)
+          })
       })
   }
 }
