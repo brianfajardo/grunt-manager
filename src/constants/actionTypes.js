@@ -6,4 +6,5 @@ export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL'
 
 // Employee handling
+export const EMPLOYEE_CREATE = 'EMPLOYEE_CREATE'
 export const EMPLOYEE_UPDATE = 'EMPLOYEE_UPDATE'

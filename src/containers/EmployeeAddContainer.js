@@ -5,7 +5,6 @@ import * as actions from '../actions/employeeAddActions'
 import EmployeeAddForm from '../components/EmployeeAddForm'
 
 class EmployeeAddContainer extends Component {
-
   render() {
     return <EmployeeAddForm {...this.props} />
   }
@@ -19,7 +18,8 @@ EmployeeAddContainer.propTypes = {
   name: PropTypes.string,
   phone: PropTypes.string,
   shift: PropTypes.string,
-  employeeUpdate: PropTypes.func.isRequired
+  employeeCreate: PropTypes.func.isRequired,
+  employeeUpdate: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, actions)(EmployeeAddContainer)
