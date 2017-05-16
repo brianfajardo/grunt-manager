@@ -1,8 +1,22 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { employeesFetch } from '../actions/employeesActions'
 import EmployeesList from '../components/EmployeesList'
 
-export default class EmployeesContainer extends Component {
+class EmployeesContainer extends Component {
+
+  componentWillMount() {
+    this.props.employeesFetch()
+  }
+
   render() {
-    return <EmployeesList />
+    return <EmployeesList {...this.props} />
   }
 }
+
+EmployeesContainer.propTypes = {
+  employeesFetch: PropTypes.func.isRequired
+}
+
+export default connect(null, { employeesFetch })(EmployeesContainer)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import * as actions from '../actions/employeeAddActions'
+import * as actions from '../actions/employeesActions'
 import EmployeeAddForm from '../components/EmployeeAddForm'
 
 class EmployeeAddContainer extends Component {
