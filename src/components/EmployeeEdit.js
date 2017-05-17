@@ -6,11 +6,13 @@ import _ from 'lodash'
 import PropTypes from 'prop-types'
 import Communications from 'react-native-communications'
 import EmployeeForm from './EmployeeForm'
+import ConfirmModal from './ConfirmModal'
 
 class EmployeeEdit extends Component {
 
   constructor() {
     super()
+    this.state = { showModal: false }
     this.onSavePress = this.onSavePress.bind(this)
     this.onTextPress = this.onTextPress.bind(this)
   }
@@ -47,8 +49,14 @@ class EmployeeEdit extends Component {
       <Card>
         <EmployeeForm {...this.props} />
         <Button title="Update Changes" onPress={this.onSavePress} />
-        <Divider />
         <Button title="Text Schedule" onPress={this.onTextPress} />
+        <Button title="Fire" onPress={
+          () => this.setState({ showModal: !this.state.showModal })}
+        />
+        <ConfirmModal
+          visible={this.state.showModal}
+          title="Are you sure you want to fire this employee?"
+        />
       </Card>
     )
   }
