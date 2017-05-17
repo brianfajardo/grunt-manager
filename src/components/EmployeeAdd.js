@@ -4,12 +4,14 @@ import PropTypes from 'prop-types'
 import EmployeeForm from './EmployeeForm'
 
 export default EmployeeAdd = props => {
+  const { name, phone, shift, employeeCreate } = props
+
   return (
     <Card>
-      <EmployeeForm {...this.props} />
+      <EmployeeForm {...props} />
       <Button
         title="Add"
-        onPress={() => this.props.employeeCreate({ name, phone, shift })}
+        onPress={() => employeeCreate({ name, phone, shift })}
       />
     </Card>
   )

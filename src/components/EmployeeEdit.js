@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Card, Button } from 'react-native-elements'
-import { employeeUpdate } from '../actions/employeesActions'
+import { employeeUpdate, employeeSave } from '../actions/employeesActions'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 import EmployeeForm from './EmployeeForm'
@@ -20,15 +20,20 @@ class EmployeeEdit extends Component {
   }
 
   render() {
-    console.log(this.props.employee)
-    const { name, phone, shift } = this.props
+    const {
+      name,
+      phone,
+      shift,
+      employeeSave,
+      employee: { uid }
+     } = this.props
 
     return (
       <Card>
         <EmployeeForm {...this.props} />
         <Button
           title="Save"
-          onPress={() => console.log(name, phone, shift)}
+          onPress={() => employeeSave(name, phone, shift, uid)}
         />
       </Card>
     )
@@ -44,13 +49,17 @@ EmployeeEdit.propTypes = {
   employee: PropTypes.shape({
     name: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
-    shift: PropTypes.string.isRequired
+    shift: PropTypes.string.isRequired,
+    uid: PropTypes.string.isRequired
   }),
   // mapStateToProps
   name: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
   shift: PropTypes.string.isRequired,
   employeeUpdate: PropTypes.func.isRequired,
+  employeeSave: PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeEdit)
+export default connect(mapStateToProps, {
+  employeeUpdate, employeeSave
+})(EmployeeEdit)
