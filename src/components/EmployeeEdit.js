@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { ScrollView } from 'react-native'
 import { Card, Button } from 'react-native-elements'
 import * as actions from '../actions/employeesActions'
 import _ from 'lodash'
@@ -62,18 +63,20 @@ class EmployeeEdit extends Component {
 
   render() {
     return (
-      <Card>
-        <EmployeeForm {...this.props} />
-        <Button title="Update Changes" onPress={this.onSavePress} />
-        <Button title="Text Schedule" onPress={this.onTextPress} />
-        <Button title="Fire" onPress={this.onFirePress} />
-        <ConfirmModal
-          visible={this.state.showModal}
-          title="Are you sure you want to fire this employee?"
-          onAcceptPress={this.onAcceptPress}
-          onDeclinePress={this.onDeclinePress}
-        />
-      </Card>
+      <ScrollView>
+        <Card>
+          <EmployeeForm {...this.props} />
+          <Button title="Update Changes" onPress={this.onSavePress} />
+          <Button title="Text Schedule" onPress={this.onTextPress} />
+          <Button title="Fire" onPress={this.onFirePress} />
+          <ConfirmModal
+            visible={this.state.showModal}
+            title="Are you sure you want to fire this employee?"
+            onAcceptPress={this.onAcceptPress}
+            onDeclinePress={this.onDeclinePress}
+          />
+        </Card>
+      </ScrollView>
     )
   }
 }
