@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import * as actions from '../actions/employeesActions'
-import EmployeeAddForm from '../components/EmployeeAddForm'
+import EmployeeAdd from '../components/EmployeeAdd'
 
 class EmployeeAddContainer extends Component {
   render() {
-    return <EmployeeAddForm {...this.props} />
+    return <EmployeeAdd {...this.props} />
   }
 }
 

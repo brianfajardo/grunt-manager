@@ -1,19 +1,12 @@
-import React, { Component } from 'react'
-import { Picker } from 'react-native'
-import { Card, FormInput, FormLabel, Button } from 'react-native-elements'
-import PropTypes from 'prop-types'
+import React from 'react'
+import { View, Picker } from 'react-native'
+import { FormLabel, FormInput } from 'react-native-elements'
 
-export default EmployeeAddForm = props => {
-  const {
-    name,
-    phone,
-    shift,
-    employeeUpdate,
-    employeeCreate
-    } = props
+export default EmployeeForm = props => {
+  const { name, phone, shift, employeeUpdate } = props
 
   return (
-    <Card>
+    <View>
       <FormLabel>Name</FormLabel>
       <FormInput
         value={name}
@@ -40,18 +33,6 @@ export default EmployeeAddForm = props => {
         <Picker.Item label="Saturday" value="Saturday" />
         <Picker.Item label="Sunday" value="Sunday" />
       </Picker>
-      <Button
-        title="Add"
-        onPress={() => employeeCreate({ name, phone, shift })}
-      />
-    </Card>
+    </View>
   )
-}
-
-EmployeeAddForm.propTypes = {
-  name: PropTypes.string,
-  phone: PropTypes.string,
-  shift: PropTypes.string,
-  employeeCreate: PropTypes.func.isRequired,
-  employeeUpdate: PropTypes.func.isRequired,
 }

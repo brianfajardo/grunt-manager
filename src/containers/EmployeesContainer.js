@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { ListView } from 'react-native';
+import { ListView } from 'react-native'
 import { connect } from 'react-redux'
-import { ListItem } from 'react-native-elements'
-import PropTypes from 'prop-types'
 import _ from 'lodash'
+import PropTypes from 'prop-types'
 import { employeesFetch } from '../actions/employeesActions'
+import EmployeesList from '../components/EmployeesList'
 
 class EmployeesContainer extends Component {
 
@@ -21,12 +21,14 @@ class EmployeesContainer extends Component {
   // via calls on componentWillMount & componentWillReceiveProps
 
   createDataSource({ employees }) {
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
+    })
     this.dataSource = ds.cloneWithRows(employees)
   }
 
   renderRow(employees) {
-    return <ListItem key={employees.uid} title={employees.name} />
+    return <EmployeesList {...employees} />
   }
 
   render() {
@@ -48,11 +50,12 @@ const mapStateToProps = ({ employeesList }) => {
 
 EmployeesContainer.propTypes = {
   employeesFetch: PropTypes.func.isRequired,
-  employees: PropTypes.arrayOf({
+  employees: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
-    shift: PropTypes.string.isRequired
-  }).isRequired
+    shift: PropTypes.string.isRequired,
+    uid: PropTypes.string.isRequired
+  })).isRequired
 }
 
 export default connect(mapStateToProps, { employeesFetch })(EmployeesContainer)
