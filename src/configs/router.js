@@ -3,10 +3,10 @@ import { Router, Scene, Actions } from 'react-native-router-flux'
 import LoginContainer from '../containers/LoginContainer'
 import EmployeesContainer from '../containers/EmployeesContainer'
 import EmployeeAddContainer from '../containers/EmployeeAddContainer'
+import EmployeeEdit from '../components/EmployeeEdit'
 
 export default () =>
   <Router sceneStyle={{ paddingTop: 65 }}>
-
     <Scene key="auth">
       <Scene
         key="login"
@@ -15,7 +15,6 @@ export default () =>
         initial
       />
     </Scene>
-
     <Scene key="main">
       <Scene
         key="employees"
@@ -30,6 +29,10 @@ export default () =>
         title="Add Employee"
         component={EmployeeAddContainer}
       />
+      <Scene
+        key="employeeEdit"
+        title="Edit Employee"
+        component={EmployeeEdit}
+      />
     </Scene>
-
   </Router>

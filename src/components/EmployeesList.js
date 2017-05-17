@@ -12,11 +12,10 @@ export default class EmployeesList extends Component {
   }
 
   onEmployeePress() {
-    Actions.employeeAdd({ employee: { ...this.props } })
+    Actions.employeeEdit({ employee: { ...this.props } })
   }
 
   render() {
-    console.log(this.props)
     const { name, uid } = this.props
 
     return (
