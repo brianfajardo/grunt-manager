@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, Button } from 'react-native-elements'
+import { Card, Button, Divider } from 'react-native-elements'
 import { employeeUpdate, employeeSave } from '../actions/employeesActions'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
+import Communications from 'react-native-communications'
 import EmployeeForm from './EmployeeForm'
 
 class EmployeeEdit extends Component {
+
+  constructor() {
+    super()
+    this.onSavePress = this.onSavePress.bind(this)
+    this.onTextPress = this.onTextPress.bind(this)
+  }
 
   // Iterate over every prop of the employee provided
   // by router Actions and update the employee form
@@ -19,22 +26,29 @@ class EmployeeEdit extends Component {
     })
   }
 
-  render() {
+  onSavePress() {
     const {
       name,
       phone,
       shift,
       employeeSave,
       employee: { uid }
-     } = this.props
+    } = this.props
+    employeeSave(name, phone, shift, uid)
+  }
 
+  onTextPress() {
+    const { phone, shift } = this.props
+    Communications.text(phone, `Your upcoming shift is on ${shift}`)
+  }
+
+  render() {
     return (
       <Card>
         <EmployeeForm {...this.props} />
-        <Button
-          title="Save"
-          onPress={() => employeeSave(name, phone, shift, uid)}
-        />
+        <Button title="Update Changes" onPress={this.onSavePress} />
+        <Divider />
+        <Button title="Text Schedule" onPress={this.onTextPress} />
       </Card>
     )
   }
